@@ -45,7 +45,7 @@ public class GestionParametros  implements IGestion
     
     
     @Override
-    public void insertar() throws SQLDataException {
+    public void insertar() throws SQLException {
         try
         {
             Conexion.GetInstancia().conectar();
@@ -57,26 +57,26 @@ public class GestionParametros  implements IGestion
         catch(SQLException ex)
         {
            
-//         throw ex;
+         throw ex;
         }
         finally{Conexion.GetInstancia().desconectar();
     }
 }
     @Override
-    public void eliminar() throws SQLDataException {
+    public void eliminar() throws SQLException {
         try
         {
             Conexion.GetInstancia().conectar();
             Conexion.GetInstancia().ejecutar("DELETE FROM PARAMETROS WHERE IDPARAMETROS="+objParametros.getIdParametros());
         }
         catch(SQLException ex){
-            //throw ex;
+            throw ex;
         }
         finally{Conexion.GetInstancia().desconectar();}
     }
 
     @Override
-    public void actualizar() throws SQLDataException {
+    public void actualizar() throws SQLException {
         try
         {
             Conexion.GetInstancia().conectar();
@@ -84,13 +84,13 @@ public class GestionParametros  implements IGestion
                     + "DESCRIPCION='"+objParametros.getDescripcion()+"',UNIDAD='"+objParametros.getUnidad()+"' WHERE IDPARAMETROS="+objParametros.getIdParametros());
         }
         catch(SQLException ex){
-           //throw ex;
+           throw ex;
         }
         finally{Conexion.GetInstancia().desconectar();}
     }
 
     @Override
-    public void consultar() throws SQLDataException {
+    public void consultar() throws SQLException {
         try
         {
             Conexion.GetInstancia().conectar();
@@ -105,7 +105,7 @@ public class GestionParametros  implements IGestion
             //}
         }
         catch(SQLException ex){
-            //throw ex;
+            throw ex;
         }
         finally{Conexion.GetInstancia().desconectar();}
     }

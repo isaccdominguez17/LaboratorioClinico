@@ -7,6 +7,7 @@
 package Gestion.Paciente.Pojo;
 
 import java.sql.SQLDataException;
+import java.sql.SQLException;
 
 /**
  *
@@ -14,8 +15,8 @@ import java.sql.SQLDataException;
  */
 public interface IGestion 
 {
-    public  void insertar() throws SQLDataException;
-    public  void eliminar() throws SQLDataException; 
-    public  void actualizar()   throws SQLDataException;
-    public  void consultar() throws SQLDataException;
+    public  void insertar() throws SQLException;
+    public  void eliminar() throws SQLException; 
+    public  void actualizar()   throws SQLException;
+    public  void consultar() throws SQLException;
 }
