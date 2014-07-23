@@ -108,6 +108,19 @@ public class Conexion {
        
     }
     
-    
-    
+    public ResultSet consultar(String instruccion) throws SQLException
+     {
+        try
+        {
+            preStat=(PreparedStatement) conex.prepareStatement(instruccion);
+            ResultSet rs=preStat.executeQuery();
+            return rs;
+        }
+        catch(SQLException ex)
+        {
+            throw ex;
+        }
+     }
+        
+           
 }

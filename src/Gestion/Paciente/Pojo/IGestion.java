@@ -12,7 +12,7 @@ import java.sql.SQLDataException;
  *
  * @author isaccandres
  */
-public interface IPaciente 
+public interface IGestion 
 {
     public  void insertar() throws SQLDataException;
     public  void eliminar() throws SQLDataException; 
