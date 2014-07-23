@@ -50,7 +50,7 @@ public class GestionParametros  implements IGestion
         {
             Conexion.GetInstancia().conectar();
             Conexion.GetInstancia().ejecutar(
-                    "INSERT INTO `PARAMETROS`(`IDPARAMETROS`, `DESCRIPCION`, `UNIDAD`)"
+                    "INSERT INTO PARAMETROS(IDPARAMETROS, DESCRIPCION, UNIDAD)"
                     + " VALUES ("+objParametros.getIdParametros()+",'"+objParametros.getDescripcion()+
                     "','"+objParametros.getUnidad()+"')");
         }
