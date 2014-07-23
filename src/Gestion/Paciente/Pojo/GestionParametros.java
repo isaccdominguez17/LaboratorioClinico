@@ -67,7 +67,7 @@ public class GestionParametros  implements IGestion
         try
         {
             Conexion.GetInstancia().conectar();
-            Conexion.GetInstancia().ejecutar("DELETE FROM `PARAMETROS` WHERE IDPARAMETROS="+objParametros.getIdParametros());
+            Conexion.GetInstancia().ejecutar("DELETE FROM PARAMETROS WHERE IDPARAMETROS="+objParametros.getIdParametros());
         }
         catch(SQLException ex){
             //throw ex;
@@ -80,8 +80,8 @@ public class GestionParametros  implements IGestion
         try
         {
             Conexion.GetInstancia().conectar();
-            Conexion.GetInstancia().ejecutar("UPDATE `PARAMETROS` SET "
-                    + "`DESCRIPCION`='"+objParametros.getDescripcion()+"',`UNIDAD`='"+objParametros.getUnidad()+"' WHERE IDPARAMETROS="+objParametros.getIdParametros());
+            Conexion.GetInstancia().ejecutar("UPDATE PARAMETROS SET "
+                    + "DESCRIPCION='"+objParametros.getDescripcion()+"',UNIDAD='"+objParametros.getUnidad()+"' WHERE IDPARAMETROS="+objParametros.getIdParametros());
         }
         catch(SQLException ex){
            //throw ex;
@@ -94,7 +94,7 @@ public class GestionParametros  implements IGestion
         try
         {
             Conexion.GetInstancia().conectar();
-            rs = Conexion.GetInstancia().consultar("SELECT `IDPARAMETROS`, `DESCRIPCION`, `UNIDAD`, FROM `PARAMETROS` WHERE IDEPARAMETROS="+objParametros.getIdParametros());
+            rs = Conexion.GetInstancia().consultar("SELECT * FROM PARAMETROS where IDPARAMETROS="+objParametros.getIdParametros());
             rs.next();
             //while(rs.next())
             //{
