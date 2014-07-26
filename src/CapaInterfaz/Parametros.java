@@ -7,8 +7,16 @@
 package CapaInterfaz;
 
 import Gestion.Paciente.Pojo.GestionParametros;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import CapaDatos.Conexion;
 
 /**
  *
@@ -19,6 +27,12 @@ public class Parametros extends javax.swing.JFrame {
     /**
      * Creates new form Parametros
      */
+    Connection cn;
+    ResultSet rs;
+    PreparedStatement ps;
+    ResultSetMetaData rsm;
+    DefaultTableModel dtm;
+    //GestionCalzado gcl = new GestionCalzado();
     
     GestionParametros objGestionParametro = new GestionParametros();
     
@@ -49,7 +63,7 @@ public class Parametros extends javax.swing.JFrame {
         btn_Modificar = new javax.swing.JButton();
         btnConsultar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaRangos = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
@@ -97,18 +111,15 @@ public class Parametros extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaRangos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
                 "Id ", "sexo", "Edad Minima", "Edad Máxima", "Limite Minimo", "Limite Máximo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaRangos);
 
         jLabel5.setText("Rangos");
 
@@ -251,18 +262,49 @@ public class Parametros extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
     private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+      // TablaRangos.re
+        for (int i = TablaRangos.getRowCount()-1; i >= 0; i--) {
+            dtm.removeRow(i);
+        }
         objGestionParametro.getObjParametros().setIdParametros(Integer.parseInt(txt_Id.getText()));
         try
         {
             objGestionParametro.consultar();
             
-            JOptionPane.showMessageDialog(this, "Calzado Encontrado");
+            JOptionPane.showMessageDialog(this, "PARAMETRO ENCONTRADO");
             GestionInterfaz();
             txt_Id.grabFocus();
         }
         catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
         
         
+        
+        try
+        {
+//            Class.forName("com.sqlserver.jdbc.Driver");
+           Conexion.setCadenaConexion("jdbc:derby://localhost:1527/Laboratorio");
+            Conexion.GetInstancia().conectar();
+            rs = Conexion.GetInstancia().consultar("SELECT * FROM RANGOS where ID_PARAMETRO="+objGestionParametro.getObjParametros().getIdParametros());
+            rsm=rs.getMetaData();
+            ArrayList<Object[]> datos = new ArrayList<Object[]>();
+            while(rs.next())
+            {
+                Object[] filas = new Object[rsm.getColumnCount()];
+                for (int i = 0; i < filas.length; i++) 
+                {
+                    filas[i]= rs.getObject(i+1);
+                }
+                datos.add(filas);
+            }
+            dtm=(DefaultTableModel)this.TablaRangos.getModel();
+            for (int i = 0; i < datos.size(); i++) 
+            {
+                dtm.addRow(datos.get(i));
+            }
+//            
+        }
+        catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
+        finally{Conexion.GetInstancia().desconectar();}
         
         
         
@@ -305,6 +347,7 @@ public class Parametros extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TablaRangos;
     private javax.swing.JButton btnConsultar;
     private javax.swing.JButton btn_Eliminar;
     private javax.swing.JButton btn_Ingresar;
@@ -316,7 +359,6 @@ public class Parametros extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextField txt_Id;
     private javax.swing.JTextField txt_Unidad;
     private javax.swing.JTextField txt_descripcion;
