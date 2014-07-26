@@ -6,15 +6,11 @@
 
 package Gestion.Paciente.Pojo;
 
-import java.sql.SQLDataException;
 import Clases.Pojo.Parametros;
 import CapaDatos.Conexion;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.SQLDataException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
+
 
 
 
@@ -31,7 +27,7 @@ public class GestionParametros  implements IGestion
     public Parametros getObjParametros() {
         return objParametros;
     }
-    public void setObjCalzado(Parametros objParametros) {
+    public void setObjParametros(Parametros objParametros) {
         this.objParametros = objParametros;
     }
 

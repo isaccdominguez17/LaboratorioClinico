@@ -11,6 +11,18 @@ package Clases.Pojo;
  * @author isaccandres
  */
 public class Rangos {
+
+    public Rangos(int IdRango, String Sexo, int EdadMin, int EdadMax, double LimMin, double LimMax, int IdParametro) {
+        this.IdRango = IdRango;
+        this.Sexo = Sexo;
+        this.EdadMin = EdadMin;
+        this.EdadMax = EdadMax;
+        this.LimMin = LimMin;
+        this.LimMax = LimMax;
+        this.IdParametro = IdParametro;
+    }
+    
+    
     
         private int IdRango;
 
