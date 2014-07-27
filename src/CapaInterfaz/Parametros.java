@@ -7,9 +7,6 @@
 package CapaInterfaz;
 
 import Gestion.Paciente.Pojo.GestionParametros;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -27,12 +24,11 @@ public class Parametros extends javax.swing.JFrame {
     /**
      * Creates new form Parametros
      */
-    Connection cn;
+    
     ResultSet rs;
-    PreparedStatement ps;
     ResultSetMetaData rsm;
     DefaultTableModel dtm;
-    //GestionCalzado gcl = new GestionCalzado();
+  
     
     GestionParametros objGestionParametro = new GestionParametros();
     
@@ -256,7 +252,7 @@ public class Parametros extends javax.swing.JFrame {
         try
         {
          objGestionParametro.insertar();
-         JOptionPane.showMessageDialog(this, "PARAMETRO Ingresado");
+         JOptionPane.showMessageDialog(this, "PARAMETRO INGRESADO");
         }
         catch(SQLException ex)
         {
