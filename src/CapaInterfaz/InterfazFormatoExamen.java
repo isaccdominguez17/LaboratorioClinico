@@ -96,7 +96,7 @@ public class InterfazFormatoExamen extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Id", "Descripción", "Unidad de Medida"
             }
         ));
         jScrollPane2.setViewportView(tablaParametros);
@@ -302,7 +302,11 @@ public class InterfazFormatoExamen extends javax.swing.JFrame {
 //           
            Conexion.setCadenaConexion("jdbc:derby://localhost:1527/Laboratorio");
             Conexion.GetInstancia().conectar();
-            rs = Conexion.GetInstancia().consultar("SELECT * FROM EXAMEN_PARAMETROS where ID_FORMATO="+objGestionFormato.getObjFormato().getIdFormatoEx());
+            //rs = Conexion.GetInstancia().consultar("SELECT * FROM EXAMEN_PARAMETROS where ID_FORMATO="+objGestionFormato.getObjFormato().getIdFormatoEx());
+            rs = Conexion.GetInstancia().consultar("select IDPARAMETROS, DESCRIPCION, UNIDAD from PARAMETROS inner join EXAMEN_PARAMETROS on PARAMETROS.IDPARAMETROS=EXAMEN_PARAMETROS.ID_PARAMETROS\n" +
+"inner join FORMATO_EXAMEN on EXAMEN_PARAMETROS.ID_FORMATO=FORMATO_EXAMEN.ID_FORMATO\n" +
+"where FORMATO_EXAMEN.ID_FORMATO="+objGestionFormato.getObjFormato().getIdFormatoEx());
+            
             rsm=rs.getMetaData();
             ArrayList<Object[]> datos = new ArrayList<Object[]>();
             while(rs.next())
