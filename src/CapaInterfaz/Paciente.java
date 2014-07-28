@@ -50,7 +50,7 @@ public class Paciente extends javax.swing.JFrame {
         txt_cedula = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -162,16 +162,84 @@ public class Paciente extends javax.swing.JFrame {
         jPanel1.add(jLabel9);
         jLabel9.setBounds(10, 200, 90, 30);
 
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagen/DecoracionMobiliarioDiseno.jpg"))); // NOI18N
-        jLabel8.setText("Direccion");
-        jPanel1.add(jLabel8);
-        jLabel8.setBounds(-10, -10, 480, 260);
-
         getContentPane().add(jPanel1);
-        jPanel1.setBounds(10, 10, 470, 270);
+        jPanel1.setBounds(30, 40, 460, 260);
+        jPanel1.getAccessibleContext().setAccessibleName("Pacientes");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 3, 14)); // NOI18N
+        jLabel6.setText("Pacientes");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(190, 10, 90, 40);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
+        InterfazGestion();
+        try
+        {
+            objGestionPaciente.insertar();
+            JOptionPane.showMessageDialog(this, "PACIENTE Ingresado");
+        }
+        catch(SQLException ex)
+        {
+            JOptionPane.showMessageDialog(this, ex.getMessage());
+        }
+    }//GEN-LAST:event_btn_IngresarActionPerformed
+
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
+
+    private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
+
+        InterfazGestion();
+        try
+        {
+            objGestionPaciente.eliminar();
+            JOptionPane.showMessageDialog(this, "PACIENTE eliminado");
+            Nuevo();
+            txt_cedula.grabFocus();
+        }
+        catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
+    }//GEN-LAST:event_btn_EliminarActionPerformed
+
+    private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
+
+        try
+        {
+            InterfazGestion();
+            objGestionPaciente.actualizar();
+            JOptionPane.showMessageDialog(this, "PACIENTE Actualizado");
+        }
+        catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
+    }//GEN-LAST:event_btn_ModificarActionPerformed
+
+    private void txt_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_sexoActionPerformed
+
+    private void btn_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NuevoActionPerformed
+        Nuevo();
+        txt_cedula.grabFocus();
+    }//GEN-LAST:event_btn_NuevoActionPerformed
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        objGestionPaciente.getObjPaciente().setCedula(Integer.parseInt(txt_cedula.getText()));
+        try
+        {
+            objGestionPaciente.consultar();
+
+            JOptionPane.showMessageDialog(this, "Paciente Encontrado");
+            GestionInterfaz();
+            txt_cedula.grabFocus();
+        }
+        catch(SQLException ex){JOptionPane.showMessageDialog(this, ("Paciente no Encontrado"));}
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_direccionActionPerformed
        //Metodos
      void Nuevo()
     {
@@ -205,75 +273,6 @@ public class Paciente extends javax.swing.JFrame {
         objGestionPaciente.getObjPaciente().setTelefono(txt_telefono.getText());
         objGestionPaciente.getObjPaciente().setDireccion(txt_direccion.getText());
     }
-    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_nombreActionPerformed
-
-    private void txt_sexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_sexoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_sexoActionPerformed
-
-    private void btn_IngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_IngresarActionPerformed
-        InterfazGestion();
-        try
-        {
-            objGestionPaciente.insertar();
-            JOptionPane.showMessageDialog(this, "PACIENTE Ingresado");
-        }
-        catch(SQLException ex)
-        {
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
-
-    }//GEN-LAST:event_btn_IngresarActionPerformed
-
-    private void btn_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EliminarActionPerformed
-
-        InterfazGestion();
-        try
-        {
-            objGestionPaciente.eliminar();
-            JOptionPane.showMessageDialog(this, "PACIENTE eliminado");
-            Nuevo();
-            txt_cedula.grabFocus();
-        }
-        catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
-    }//GEN-LAST:event_btn_EliminarActionPerformed
-
-    private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
-
-        try
-        {
-            InterfazGestion();
-            objGestionPaciente.actualizar();
-            JOptionPane.showMessageDialog(this, "PACIENTE Actualizado");
-        }
-        catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
-
-    }//GEN-LAST:event_btn_ModificarActionPerformed
-
-    private void btn_NuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_NuevoActionPerformed
-        Nuevo();
-        txt_cedula.grabFocus();
-    }//GEN-LAST:event_btn_NuevoActionPerformed
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        objGestionPaciente.getObjPaciente().setCedula(Integer.parseInt(txt_cedula.getText()));
-        try
-        {
-            objGestionPaciente.consultar();
-
-            JOptionPane.showMessageDialog(this, "Paciente Encontrado");
-            GestionInterfaz();
-            txt_cedula.grabFocus();
-        }
-        catch(SQLException ex){JOptionPane.showMessageDialog(this, ("Paciente no Encontrado"));}
-    }//GEN-LAST:event_btnConsultarActionPerformed
-
-    private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_direccionActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -320,7 +319,7 @@ public class Paciente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField txt_cedula;
