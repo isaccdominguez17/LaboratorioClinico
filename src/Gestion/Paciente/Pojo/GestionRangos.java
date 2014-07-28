@@ -7,7 +7,6 @@
 package Gestion.Paciente.Pojo;
 
 import CapaDatos.Conexion;
-import Clases.Pojo.Parametros;
 import Clases.Pojo.Rangos;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -48,7 +47,7 @@ public class GestionRangos implements IGestion {
             Conexion.GetInstancia().ejecutar(
                     "INSERT INTO RANGOS(ID_RANGO, SEXO, EDAD_MIN, EDAD_MAX, LIM_MIN,LIM_MAX,ID_PARAMETRO)"
                     + " VALUES ("+objRangos.getIdRango()+",'"+objRangos.getSexo()+
-                    "',"+objRangos.getEdadMin()+","+objRangos.getEdadMax()+","+objRangos.getLimMin()+","+objRangos.getLimMin()+","+objRangos.getIdParametro()+")");
+                    "',"+objRangos.getEdadMin()+","+objRangos.getEdadMax()+","+objRangos.getLimMin()+","+objRangos.getLimMax()+","+objRangos.getIdParametro()+")");
         }
         catch(SQLException ex)
         {

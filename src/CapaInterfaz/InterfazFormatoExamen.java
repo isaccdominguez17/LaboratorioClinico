@@ -242,7 +242,7 @@ public class InterfazFormatoExamen extends javax.swing.JFrame {
         objGestionFormato.getObjFormato().setIdFormatoEx(Integer.parseInt(txt_Id.getText()));
         objGestionFormato.getObjFormato().setNombreFormatoEx(txt_Nombre.getText());
         objGestionFormato.getObjFormato().setTipoMuestra(txt_TipoMuestra.getText());
-        objGestionFormato.getObjFormato().setPrecio(Double.parseDouble(txt_Id.getText()));
+        objGestionFormato.getObjFormato().setPrecio(Double.parseDouble(txt_Precio.getText()));
     }
     
     
@@ -277,7 +277,13 @@ public class InterfazFormatoExamen extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EliminarActionPerformed
 
     private void btn_ModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ModificarActionPerformed
-        // TODO add your handling code here:
+         try
+        {
+            InterfazGestion();
+            objGestionFormato.actualizar();
+            JOptionPane.showMessageDialog(this, "FORMATO ACTUALIZADO");
+        }
+        catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
     }//GEN-LAST:event_btn_ModificarActionPerformed
 
     private void btn_ConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ConsultarActionPerformed

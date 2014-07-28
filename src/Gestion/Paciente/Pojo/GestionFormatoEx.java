@@ -49,6 +49,8 @@ public class GestionFormatoEx implements IGestion{
                             + ", NOMBRE_FORMATO, TIPO_MUESTRA,PRECIO)"
                     + " VALUES ("+objFormato.getIdFormatoEx()+",'"+objFormato.getNombreFormatoEx()+
                     "','"+objFormato.getTipoMuestra()+"',"+objFormato.getPrecio()+")");
+            
+            
         }
         catch(SQLException ex)
         {
@@ -65,6 +67,7 @@ public class GestionFormatoEx implements IGestion{
         {
             Conexion.GetInstancia().conectar();
             Conexion.GetInstancia().ejecutar("DELETE FROM FORMATO_EXAMEN WHERE ID_FORMATO="+objFormato.getIdFormatoEx());
+            Conexion.GetInstancia().ejecutar("DELETE FROM EXAMEN_PARAMETROS WHERE ID_FORMATO="+objFormato.getIdFormatoEx());
         }
         catch(SQLException ex){
             throw ex;
@@ -78,7 +81,7 @@ public class GestionFormatoEx implements IGestion{
         {
             Conexion.GetInstancia().conectar();
             Conexion.GetInstancia().ejecutar("UPDATE FORMATO_EXAMEN SET "
-                    + "NOMBRE_FORMATO='"+objFormato.getNombreFormatoEx()+"',TIPO_MUESTRA='"+objFormato.getTipoMuestra()+"',PRECIO='"+objFormato.getPrecio()+"' WHERE ID_FORMATO="+objFormato.getIdFormatoEx());
+                    + "NOMBRE_FORMATO='"+objFormato.getNombreFormatoEx()+"',TIPO_MUESTRA='"+objFormato.getTipoMuestra()+"',PRECIO="+objFormato.getPrecio()+" WHERE ID_FORMATO="+objFormato.getIdFormatoEx());
         }
         catch(SQLException ex){
            throw ex;
@@ -98,7 +101,7 @@ public class GestionFormatoEx implements IGestion{
                 this.objFormato.setIdFormatoEx(Integer.parseInt(rs.getString(1)));
                 this.objFormato.setNombreFormatoEx(rs.getString(2));
                 this.objFormato.setTipoMuestra(rs.getString(3));
-                this.objFormato.setPrecio(Integer.parseInt(rs.getString(4)));
+                this.objFormato.setPrecio(Double.parseDouble(rs.getString(4)));
             //}
         }
         catch(SQLException ex){

@@ -86,7 +86,7 @@ public class InterfazRangos extends javax.swing.JFrame {
         objGestionRangos.getObjRangos().setEdadMax(Integer.parseInt(txt_EdadMax.getText()));
         objGestionRangos.getObjRangos().setLimMin(Double.parseDouble(txt_LimMin.getText()));
         objGestionRangos.getObjRangos().setLimMax(Double.parseDouble(txt_LimMax.getText()));
-          objGestionRangos.getObjRangos().setIdParametro(Integer.parseInt(txt_LimMax.getText()));
+          objGestionRangos.getObjRangos().setIdParametro(Integer.parseInt(txt_IdParametro.getText()));
     }
         
    
@@ -118,6 +118,7 @@ public class InterfazRangos extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jLabel1.setText("Id Rango");
 
@@ -132,6 +133,8 @@ public class InterfazRangos extends javax.swing.JFrame {
         jLabel6.setText("Limite Máximo");
 
         jLabel7.setText("Parametro Asociado");
+
+        txt_IdParametro.setEditable(false);
 
         btn_Insertar.setText("Ingresar");
         btn_Insertar.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +259,7 @@ public class InterfazRangos extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(txt_IdParametro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         pack();

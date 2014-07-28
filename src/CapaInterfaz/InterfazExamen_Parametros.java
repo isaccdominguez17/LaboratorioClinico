@@ -115,6 +115,7 @@ public class InterfazExamen_Parametros extends javax.swing.JFrame {
         {
          objGestionExamen_Parametros.insertar();
          JOptionPane.showMessageDialog(this, "PARAMETRO INGRESADO EN FORMATO");
+         this.dispose();
         }
         catch(SQLException ex)
         {
@@ -130,6 +131,7 @@ public class InterfazExamen_Parametros extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "PARAMETRO eliminado");
             this.txt_IdParametros.setText(null);
             txt_IdParametros.grabFocus();
+            this.dispose();
         }
         catch(SQLException ex){JOptionPane.showMessageDialog(this, ex.getMessage());}
     }//GEN-LAST:event_btnEliminarActionPerformed

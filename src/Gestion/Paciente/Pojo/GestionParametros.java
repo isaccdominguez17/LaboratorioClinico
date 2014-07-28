@@ -64,6 +64,8 @@ public class GestionParametros  implements IGestion
         {
             Conexion.GetInstancia().conectar();
             Conexion.GetInstancia().ejecutar("DELETE FROM PARAMETROS WHERE IDPARAMETROS="+objParametros.getIdParametros());
+            Conexion.GetInstancia().ejecutar("DELETE FROM EXAMEN_PARAMETROS WHERE ID_PARAMETROS="+objParametros.getIdParametros());
+            Conexion.GetInstancia().ejecutar("DELETE FROM RANGOS WHERE ID_PARAMETRO="+objParametros.getIdParametros());
         }
         catch(SQLException ex){
             throw ex;
