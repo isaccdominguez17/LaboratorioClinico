@@ -32,41 +32,70 @@ public Paciente(int Cedula, String Nombre, String Fecha, String Sexo
     
          public void setCedula(int Cedula) 
         {
-                this.Cedula = Cedula;
-        try
-        {
             this.Cedula = Cedula;
-        }
-        catch(NumberFormatException ex)
-                {
+            try
+            {
+                this.Cedula = Cedula;
+            }
+            catch(NumberFormatException ex)
+            {
                    System.out.println("No Es Numero de Cedula"); 
-                }
+            }
         }
-          public String Nombre; 
-        public String getNombre(){
+         
+        public String Nombre; 
+        public String getNombre()
+        {
             return Nombre;
         }
-     public void setNombre(String Nombre) {
-     this.Nombre = Nombre;
-    }
+        public void setNombre(String Nombre) 
+        {
+        this.Nombre = Nombre;
+        try
+            {
+                this.Nombre = Nombre;
+            }
+            catch(NumberFormatException ex)
+            {
+                   System.out.println("No es un Nombre válido"); 
+            }
+        }
         
         public String Fecha; 
         public String getFecha(){
             return Fecha;
         }
         
-     public void setFecha(String Fecha) {
-     this.Fecha = Fecha;
-    }
+     public void setFecha(String Fecha) 
+     {
+        this.Fecha = Fecha;
+        try
+            {
+                this.Fecha = Fecha;
+            }
+            catch(NumberFormatException ex)
+            {
+                   System.out.println("No es una Fecha Válida"); 
+            }
+     }
         
         public String Sexo; 
         public String getSexo(){
             return Sexo;
         }
         
-     public void setSexo(String Sexo) {
-     this.Sexo = Sexo;
-    }
+     public void setSexo(String Sexo) 
+     {
+        this.Sexo = Sexo;
+        try
+            {
+                this.Sexo = Sexo;
+            }
+            catch(NumberFormatException ex)
+            {
+                   System.out.println("No es sexo Valido"); 
+            }
+     }
              
         public String Telefono; 
         public String getTelefono(){

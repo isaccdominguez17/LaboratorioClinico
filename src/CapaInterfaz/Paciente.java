@@ -149,6 +149,20 @@ public class Paciente extends javax.swing.JFrame {
         });
         jPanel1.add(btn_Ingresar);
         btn_Ingresar.setBounds(320, 10, 120, 40);
+
+        txt_cedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_cedulaActionPerformed(evt);
+            }
+        });
+        txt_cedula.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txt_cedulaKeyReleased(evt);
+            }
+        });
         jPanel1.add(txt_cedula);
         txt_cedula.setBounds(180, 30, 103, 20);
 
@@ -240,6 +254,43 @@ public class Paciente extends javax.swing.JFrame {
     private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_direccionActionPerformed
+
+    private void txt_cedulaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyPressed
+        // TODO add your handling code here:.
+        
+    }//GEN-LAST:event_txt_cedulaKeyPressed
+
+    private void txt_cedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cedulaActionPerformed
+
+    private void txt_cedulaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cedulaKeyReleased
+        // TODO add your handling code here
+        String str = txt_cedula.getText();
+        char[] fuente = str.toCharArray();
+        char[] resultado = new char[fuente.length];
+        int j=0;
+        boolean error=false;
+        for(int i=0; i<fuente.length;i++)
+        {
+            if(fuente[i]>='0' && fuente[i]<='9')
+            {
+                resultado[j++] = fuente[i];
+            }
+            
+            else
+            {
+            error=true;
+            java.awt.Toolkit.getDefaultToolkit().beep();
+            }
+        }
+        if(error)
+        {
+            txt_cedula.setText("");
+            txt_cedula.setText(new String(resultado,0,j));
+        }
+        
+    }//GEN-LAST:event_txt_cedulaKeyReleased
        //Metodos
      void Nuevo()
     {
